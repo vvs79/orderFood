@@ -18,18 +18,22 @@ export class HomeComponent implements OnInit {
     showOrder: boolean = false;
     sum: number;
     menuNum: number;
+    orderFood: number;
+
 
     constructor(private menuService: MenuService,
                 private ordersService: OrdersService) {
     }
 
     ngOnInit() {
+        this.orderFood = 0;
         this.menuNum = 1;
         this.menuName = 'Menu ' + this.menuNum;
         this.items = this.menuService.getMenu(0);
     }
 
     selectMenu(num: number) {
+        this.orderFood = 0;
         this.menuNum = num + 1;
         this.menuName = 'Menu ' + this.menuNum;
         this.items = this.menuService.getMenu(num);
@@ -49,5 +53,12 @@ export class HomeComponent implements OnInit {
         this.menuService.setOrder({userName: this.userName, menu: this.menuNum, order: this.newOrder, dateTime: this.dateTime});
         this.ordersService.addOrder(this.userName, this.menuNum, this.newOrder, this.dateTime);
         this.showOrder = true;
+    }
+
+    checkOrder() {
+        this.orderFood = 0;
+        this.items.map(item => { if (item.selected)
+                                     this.orderFood += 1;
+                                });
     }
 }

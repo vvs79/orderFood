@@ -24,56 +24,56 @@
             </div>
         </div>
     </div>
-
+    <br />
     <table class="table table-striped">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>Item</th>
+                <th class="padding-left-20">Item</th>
                 <th>Price</th>
                 <th>Selected</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of items">
-                <td class="col-sm-4">
+                <td class="col-sm-4 padding-left-20">
                     <input [(ngModel)]="item.name" [disabled]='item.name' />
                 </td>
                 <td class="col-sm-4">
                     <input [(ngModel)]="item.price" [disabled]='item.price' />
                 </td>
-                <td class="col-sm-4">
-                    <input type="checkbox" [(ngModel)]="item.selected" />
+                <td class="col-sm-3">
+                    <input type="checkbox" [(ngModel)]="item.selected" (ngModelChange)="checkOrder()" />
                 </td>
             </tr>
         </tbody>
     </table>
     <br />
-    <div class="form-group text-center">
-        Enter your name
-        <input [(ngModel)]="userName" required />
+    <div class="form-group text-center col-sm-4 col-sm-offset-4">
+        <label for="labelForName">Enter your name</label>
+        <input [(ngModel)]="userName" required class="form-control" id="labelForName" placeholder="User name">
     </div>
     <br />
-    <section class="example-container text-center">
+    <section class="example-container text-center col-sm-4 col-sm-offset-4">
         <div class="example-wrapper">
-            <label class="example-input-wrapper">
+            <label class="example-input-wrapper" for="labelForTime">
                 Set time
-                <input placeholder="Date Time:" [(ngModel)]="dateTime"
-                       [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" required>
-                <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
             </label>
+            <input placeholder="Time" [(ngModel)]="dateTime" class="form-control" id="labelForTime"
+                   [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" required>
+            <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
         </div>
     </section>
-    <br/ >
-    <div class="form-group text-center">
-        <button class="btn btn-default" (click)="order()" [disabled]="!dateTime || !userName">Place Order</button>
+    <br />
+    <div class="form-group text-center col-sm-4 col-sm-offset-4">
+        <button class="btn btn-primary" (click)="order()" [disabled]="!dateTime || !userName || orderFood == 0">Place Order</button>
     </div>
 </div>
-
-<div class="form-group user-order" [hidden]="!showOrder">
-    <h4>{{userName}} ordered:</h4>
+<br />
+<div class="form-group user-order col-sm-12" [hidden]="!showOrder">
+    <h3>{{userName}} <h4>ordered:</h4></h3>
     <h5 *ngFor="let order of newOrder">
         {{order.name}} : {{order.price}}
     </h5>
     <h4>Total: {{sum | number: '1.2-2'}}</h4>
-    <h4>Pick up time: {{dateTime | date: 'MM/dd/yyyy hh:mm:ss'}}</h4>
+    <h4>Pick up time: {{dateTime | date: 'MM/dd/yyyy hh:mm:ss a'}}</h4>
 </div>

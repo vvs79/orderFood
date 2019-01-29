@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Angular Project",
   "scripts": {
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prod": "NODE_ENV=production node server.js",
+    "postinstall": "webpack -p",
     "dev": "webpack-dev-server --hot --open",
     "build": "webpack"
   },
@@ -12,9 +15,9 @@
     "@angular/common": "~7.0.0",
     "@angular/compiler": "~7.0.0",
     "@angular/core": "~7.0.0",
-    "@angular/forms": "~7.0.0",
+    "@angular/forms": "7.0.0",
     "@angular/material": "^5.0.0-rc0",
-    "@angular/platform-browser": "~7.0.0",
+    "@angular/platform-browser": "7.0.0",
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "bootstrap": "^4.2.1",
@@ -43,6 +46,7 @@
     "uglifyjs-webpack-plugin": "^2.0.0",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "webpack-dev-server": "^3.1.9",
+    "webpack-filter-warnings-plugin": "^1.2.1"
   }
 }

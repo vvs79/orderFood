@@ -2,15 +2,16 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>User name</th>
+                <th class="padding-left-20">User name</th>
                 <th>Store</th>
                 <th>Order</th>
                 <th>Pick up time</th>
+                <th>Picked up</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let item of orders; let i = index">
-                <td class="col-sm-3">
+                <td class="col-sm-3 padding-left-20">
                     {{item.userName}}
                 </td>
                 <td class="col-sm-1">
@@ -22,7 +23,7 @@
                     </p>
                 </td>
                 <td class="col-sm-3">
-                    {{item.dateTime | date: 'MM/dd/yyyy hh:mm:ss'}}
+                    {{item.dateTime | date: 'MM/dd/yyyy hh:mm:ss a'}}
                 </td>
                 <td class="col-sm-2">
                     <label class="form-check-inline" (click)="setCheck(i, true)">

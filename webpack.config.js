@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
 module.exports = {
     mode: 'none',
     entry: {
@@ -45,9 +46,12 @@ module.exports = {
    stats: {
    },
    plugins: [
-    new webpack.ContextReplacementPlugin(
-        /angular(\\|\/)core/,
-        path.resolve(__dirname, 'src'),
+      new FilterWarningsPlugin({
+          exclude: /System.import/
+      }),
+      new webpack.ContextReplacementPlugin(
+          /angular(\\|\/)core/,
+          path.resolve(__dirname, 'src'),
       {}
     ),
     new UglifyJSPlugin()
