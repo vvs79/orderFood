@@ -1,0 +1,39 @@
+<div class="form-group">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User name</th>
+                <th>Store</th>
+                <th>Order</th>
+                <th>Pick up time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of orders; let i = index">
+                <td class="col-sm-3">
+                    {{item.userName}}
+                </td>
+                <td class="col-sm-1">
+                    {{item.menu}}
+                </td>
+                <td class="col-sm-3">
+                    <p *ngFor="let order of item.order">
+                        {{order.name}} : {{order.price}}
+                    </p>
+                </td>
+                <td class="col-sm-3">
+                    {{item.dateTime | date: 'MM/dd/yyyy hh:mm:ss'}}
+                </td>
+                <td class="col-sm-2">
+                    <label class="form-check-inline" (click)="setCheck(i, true)">
+                        <input class="form-check-input" type="radio" name="{{'mode' + i}}" [value]="true" [(ngModel)]="item.picked">Picked up
+                    </label>
+                    <br />
+                    <label class="form-check-inline" (click)="setCheck(i, false)">
+                        <input class="form-check-input" type="radio" name="{{'mode' + i}}" [value]="false" [(ngModel)]="item.picked">Missed
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

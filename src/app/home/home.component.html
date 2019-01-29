@@ -1,0 +1,79 @@
+<div class="page-header text-center">
+    <h3>{{menuName}}</h3>
+</div>
+<div class="panel">
+    <div class="form-inline">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="selectMenu(0)">Menu 1</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="selectMenu(1)">Menu 2</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="selectMenu(2)">Menu 3</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <button class="btn btn-default" (click)="selectMenu(3)">Menu 4</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Selected</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td class="col-sm-4">
+                    <input [(ngModel)]="item.name" [disabled]='item.name' />
+                </td>
+                <td class="col-sm-4">
+                    <input [(ngModel)]="item.price" [disabled]='item.price' />
+                </td>
+                <td class="col-sm-4">
+                    <input type="checkbox" [(ngModel)]="item.selected" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <div class="form-group text-center">
+        Enter your name
+        <input [(ngModel)]="userName" required />
+    </div>
+    <br />
+    <section class="example-container text-center">
+        <div class="example-wrapper">
+            <label class="example-input-wrapper">
+                Set time
+                <input placeholder="Date Time:" [(ngModel)]="dateTime"
+                       [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" required>
+                <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
+            </label>
+        </div>
+    </section>
+    <br/ >
+    <div class="form-group text-center">
+        <button class="btn btn-default" (click)="order()" [disabled]="!dateTime || !userName">Place Order</button>
+    </div>
+</div>
+
+<div class="form-group user-order" [hidden]="!showOrder">
+    <h4>{{userName}} ordered:</h4>
+    <h5 *ngFor="let order of newOrder">
+        {{order.name}} : {{order.price}}
+    </h5>
+    <h4>Total: {{sum | number: '1.2-2'}}</h4>
+    <h4>Pick up time: {{dateTime | date: 'MM/dd/yyyy hh:mm:ss'}}</h4>
+</div>

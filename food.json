@@ -1,0 +1,28 @@
+{
+    [
+      {
+        { name: "Bread",  select: false, price: 1.5 },
+        { name: "Butter", select: false, price: 2.4 },
+        { name: "Potate", select: false, price: 2.2 },
+        { name: "Cheese", select: false, price: 3.7 }
+      },
+      {
+        { name: "Soup",   select: false, price: 2.5 },
+        { name: "Apple",  select: false, price: 1.4 },
+        { name: "Juice",  select: false, price: 2.0 },
+        { name: "Carrot", select: false, price: 1.7 }
+      },
+      {
+        { name: "Salat",  select: false, price: 1.6 },
+        { name: "Potate", select: false, price: 2.2 },
+        { name: "Fresh",  select: false, price: 2.3 },
+        { name: "Bread",  select: false, price: 1.5 }
+      },
+      {
+        { name: "Cabbage", select: false, price: 1.4 },
+        { name: "Rice",    select: false, price: 2.6 },
+        { name: "Tomato",  select: false, price: 1.8 },
+        { name: "Pasta",   select: false, price: 2.7 }
+      }
+    ]
+}
